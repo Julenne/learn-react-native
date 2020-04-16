@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     },
     operationButton: {
         color: '#fff',
-        backgroundColor: '#fa8231',
+        backgroundColor: '#FB3640',
     },
     buttonDouble: {
         width: (Dimensions.get('window').width / 4) * 2, // a largura será 2x maior
