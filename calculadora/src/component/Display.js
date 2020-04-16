@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end'
     },
     displayValue: {
-        fontSize: 100,
+        fontSize: 70,
         color: '#fff',
     }
 });

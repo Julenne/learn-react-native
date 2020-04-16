@@ -2,7 +2,6 @@ import React from 'react';
 import{
     StyleSheet,
     Text,
-    Dimenssions,
     TouchableHighlight,
     Dimensions
 } from 'react-native';
