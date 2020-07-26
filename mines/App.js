@@ -4,6 +4,7 @@ import { Colors } from 'react-native/Libraries/NewAppScreen';
 import params from './src/params';
 import Field from './src/components/Field';
 
+
 export default class App extends Component {
   render() {
     return (
@@ -18,6 +19,7 @@ export default class App extends Component {
         <Field mined opened exploded/>
         <Field flagged />
         <Field flagged opened/>
+        
       </View>
     );
   }
@@ -27,6 +29,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
+    justifyContent: 'space-around',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
