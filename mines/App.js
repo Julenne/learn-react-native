@@ -1,22 +1,8 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
-
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
+import { StyleSheet, View, Text } from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 import params from './src/params';
+import Field from './src/components/Field';
 
 const App: () => React$Node = () => {
   return (
@@ -24,6 +10,7 @@ const App: () => React$Node = () => {
       <Text style={styles.sectionTitle}>Iniciando o Mines</Text>
       <Text style={styles.sectionContainer}>Tamanho da Grade: 
         {params.getRowsAmount()}x{params.getColumnsAmount()}</Text>
+      <Field />
     </View>
   );
 };
