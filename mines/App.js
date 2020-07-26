@@ -1,18 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import params from './src/params';
 import Field from './src/components/Field';
 
-const App: () => React$Node = () => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.sectionTitle}>Iniciando o Mines</Text>
-      <Text style={styles.sectionContainer}>Tamanho da Grade: 
-        {params.getRowsAmount()}x{params.getColumnsAmount()}</Text>
-      <Field />
-    </View>
-  );
+export default class App extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.sectionTitle}>Iniciando o Mines</Text>
+        <Text style={styles.sectionContainer}>Tamanho da Grade: 
+          {params.getRowsAmount()}x{params.getColumnsAmount()}</Text>
+        <Field />
+        <Field opened/>
+        <Field opened nearMines={4}/> 
+      </View>
+    );
+  }
 };
 
 const styles = StyleSheet.create({
@@ -60,4 +64,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+//export default App;
