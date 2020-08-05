@@ -31,7 +31,7 @@ export default props => {
       </TouchableOpacity>
     </View>
     </Modal>
-
+    
   )
 }
 

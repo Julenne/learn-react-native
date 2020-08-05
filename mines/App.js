@@ -46,7 +46,7 @@ export default class App extends Component {
 
     if (lost) {
       showMines(board)
-      Alert.alert('PERDEU!', 'Nossa, que burrice')
+      Alert.alert('PERDEU!', 'Poxa, não foi dessa vez!')
     }
     if (won) {
       Alert.alert('PARABÉNS', 'Você Venceu!')
@@ -81,7 +81,7 @@ export default class App extends Component {
 
         <Header flagsLeft={this.minesAmount() - flagsUsed(this.state.board)} 
         onNewGame={()=> this.setState(this.createState())}
-        onFlagPress={() => this.setState({ showLevelSelection: true})}/>
+        onLevelPress={() => this.setState({ showLevelSelection: true})}/>
         
         <View style={styles.board}>
           <MineField board={this.state.board} 

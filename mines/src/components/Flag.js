@@ -61,13 +61,13 @@ const styles = StyleSheet.create({
   base1Bigger: {
     height: 4,
     width: 12,
-    marginTop: 24,
+    marginTop: 25,
     marginLeft: 12,
   },
   base2Bigger: {
     height: 4,
     width: 20,
     marginLeft: 8,
-    marginTop: 28
+    marginTop: 28,
   }
 })
