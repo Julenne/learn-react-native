@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     width: 6,
     backgroundColor: '#222',
     marginLeft: 7,
-    marginTop: 13,
+    marginTop: 14,
   },
   base2: {
     position: 'absolute',
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     width: 10,
     backgroundColor: '#222',
     marginLeft: 5,
-    marginTop: 15,
+    marginTop: 16,
   },
   flagpoleBigger: {
     height: 28,
