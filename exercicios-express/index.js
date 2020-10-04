@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const saudacao = require('./saudacaoMid')
+const usuarioApi = require('./api/usuario')
 /*
 Dois launchers utilizados:  nodemon e pm2(que é mais para produção e mais profissional)
 O pm2 é bom para microserviços
@@ -13,6 +14,10 @@ O .use aceita qualquer tipo de requisição(delete, get post...)
 O next() é utilizado para passar para a outra função
 */
 // o resultado dessa função(.text() && .json()) é uma função middleware
+
+app.post('/usuario', usuarioApi.salvar)
+app.get('/usuario', usuarioApi.obter)
+
 app.use(bodyParser.text())//  text/plain
 app.use(bodyParser.json())//  application/json
 app.use(bodyParser.urlencoded({extended: true})) //urlencoded é tipo de dado de um forms no html
