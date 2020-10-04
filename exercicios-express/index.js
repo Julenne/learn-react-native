@@ -3,6 +3,11 @@ const app = express()
 const bodyParser = require('body-parser')
 const saudacao = require('./saudacaoMid')
 const usuarioApi = require('./api/usuario')
+
+const produtoApi = require('./api/produto')
+produtoApi(app,' com parametro!')
+// ou: require('./api/produto')(app,' com parametro!')
+
 /*
 Dois launchers utilizados:  nodemon e pm2(que é mais para produção e mais profissional)
 O pm2 é bom para microserviços
