@@ -20,6 +20,31 @@ app.use((req, res, next) => {
   next() //o next poderia ser substituido por qualquer outro nome mas ele é o mais usual no node.js
 })
 
+app.post('/clientes/relatorio', (req,res) => {
+  //essa middleware é mais especifica do que a rota 'clientes/:id' então ela deve vir 
+  //acima da middleware que é considerada como geral.
+  res.send(`Cliente relatório: completo = ${req.query.completo} ano = ${req.query.ano}`)
+})
+
+app.post('/corpo', (req,res) => {
+  let corpo = '';
+  //o .on vai receber qualquer tipo de de dado.
+  //formato textual o retorno
+  req.on('data', function(parte) {
+    corpo += parte;
+  })
+
+  req.on('end', function() {
+    res.send(corpo);
+  })
+})
+
+app.get('/clientes/:id',(req,res) => {
+  res.send(`Cliente ${req.params.id} selecionado`);
+})
+
+
+
 app.get('/opa', (req, res, next) => {
   console.log('Durante...')
   res.json({
