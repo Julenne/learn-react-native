@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {View, Text, ImageBackground, StyleSheet } from 'react-native'
+import {View, Text, ImageBackground, StyleSheet, FlatList } from 'react-native'
 
 import commonStyles from '../commonStyles'
 import todayImage from '../../assets/imgs/today.jpg'
@@ -10,8 +10,24 @@ import 'moment/locale/pt-br'
 import Task from '../components/Task';
 
 export default class TaksList extends Component {
+  state ={
+    tasks: [{
+      id: Math.random(),
+      desc: 'Comprar Livro de React Native',
+      estimateAt: new Date(),
+      doneAt: new Date(),
+    }, {
+      id: Math.random(),
+      desc: 'Ler Livro de React Native',
+      estimateAt: new Date(),
+      doneAt: null,
+    }]
+  }
+  
+  
   render() {
-    const today = moment().locale('pt-br').format('dddd, D [de] MMMM')//colocar a data no app
+    const today = moment().locale('pt-br').format('dddd, D [de] MMMM')
+      //colocar a data no app
     return (
       <View style={styles.container}>
         <ImageBackground style={styles.background} source={todayImage}>
@@ -21,10 +37,11 @@ export default class TaksList extends Component {
           </View>
         </ImageBackground>
         <View style={styles.taskList}>
-          <Task desc="Comprar Livro" estimateAt={new Date()} 
-              doneAt={new Date()}/>
-          <Task desc="Ler livro" estimateAt={new Date()} 
-              doneAt={null}/>
+          <FlatList data={this.state.tasks}
+            keyExtractor={item => `${item.id}`}
+            renderItem={({item}) => <Task {...item} />} />
+            {/* "<Task {...item} />" : é uma forma de pegar todos os atributos do
+             item e passar como props para "Task" */}
         </View>
       </View>
     )
