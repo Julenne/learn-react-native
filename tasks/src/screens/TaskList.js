@@ -12,7 +12,7 @@ import 'moment/locale/pt-br'
 import Task from '../components/Task';
 
 export default class TaksList extends Component {
-  state ={
+  state = {
     showDoneTasks: true,
     tasks: [{
       id: Math.random(),
@@ -27,9 +27,25 @@ export default class TaksList extends Component {
     }]
   }
   
+  componentDidMount = () => {
+    this.filterTasks();
+  }
+
   toggleFilter = () => {
-    this.setState({showDoneTasks: !this.state.showDoneTasks}) 
+    this.setState({showDoneTasks: !this.state.showDoneTasks}, this.filterTasks) 
       //alternância falso fica verdadeiro e verdadeiro fica falso para o botão de ver ou não as tasks concluidas
+  }
+
+  filterTasks = () => {
+    let visibleTasks = null;
+    if(this.state.showDoneTasks) {
+      visibleTasks = [...this.state.tasks]
+    } else {
+      const pending = task => task.doneAt === null
+      visibleTasks = this.state.tasks.filter(pending)
+    }
+
+    this.setState({ visibleTasks })
   }
 
   toggleTask = taskId => {
@@ -40,7 +56,7 @@ export default class TaksList extends Component {
       }
     })
 
-    this.setState({ tasks })
+    this.setState({ tasks }, this.filterTasks)
   }
   render() {
     const today = moment().locale('pt-br').format('dddd, D [de] MMMM')
@@ -60,7 +76,7 @@ export default class TaksList extends Component {
           </View>
         </ImageBackground>
         <View style={styles.taskList}>
-          <FlatList data={this.state.tasks}
+          <FlatList data={this.state.visibleTasks}
             keyExtractor={item => `${item.id}`}
             renderItem={({item}) => <Task {...item} toggleTask={this.toggleTask} />} />
             {/* "{...item}" : é uma forma de pegar todos os atributos do
