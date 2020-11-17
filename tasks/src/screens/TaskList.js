@@ -14,7 +14,7 @@ import AddTask from './AddTask';
 export default class TaksList extends Component {
   state = {
     showDoneTasks: true,
-    showAddTask: true,
+    showAddTask: false,
     visibleTasks: [],
     tasks: [{
       id: Math.random(),
@@ -86,6 +86,12 @@ export default class TaksList extends Component {
             {/* "{...item}" : é uma forma de pegar todos os atributos do
              item e passar como props para "Task" */}
         </View>
+        <TouchableOpacity style={styles.addButton}
+          activeOpacity={0.7}
+          onPress={() => this.setState({ showAddTask: true})}>
+          <Icon name="plus" size={20}
+            color={commonStyles.colors.secondary}/>
+        </TouchableOpacity>
       </View>
     )
   }
@@ -124,6 +130,17 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     justifyContent: 'flex-end',
     marginTop: Platform.OS === 'ios' ? 45 : 10
+  },
+  addButton: {
+    position: 'absolute',
+    right: 30,
+    bottom: 30,
+    width: 50,
+    height: 50,
+    borderRadius:25,
+    backgroundColor: commonStyles.colors.today,
+    justifyContent: 'center',
+    alignItems: 'center',
   }
 
 })
