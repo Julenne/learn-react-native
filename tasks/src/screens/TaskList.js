@@ -60,6 +60,9 @@ export default class TaksList extends Component {
 
     this.setState({ tasks }, this.filterTasks)
   }
+
+  addTask = (newTask)
+
   render() {
     const today = moment().locale('pt-br').format('dddd, D [de] MMMM')
       //colocar a data no app
